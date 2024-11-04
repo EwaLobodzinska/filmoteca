@@ -1,0 +1,36 @@
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    height: 100%; 
+    position: fixed; 
+    overflow: auto; 
+    }
+
+    .menu li {
+    text-align: center;
+    border-bottom: 1px solid ;
+    }
+
+    .menu li:last-child {
+    border-bottom: none;
+    }
+
+    .menu a{
+    display: block;
+    padding: 8px;
+    background: rgb(0,0,0, 0.9);  /* transparency */
+}
+.menu li a{
+    display: block;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+}
+
+.menu li a:hover{
+    background-color: rgb(48, 48, 139);
+}
