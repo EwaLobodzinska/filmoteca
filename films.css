@@ -1,9 +1,22 @@
+
+.header button{
+    float: right;
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 40px;
+}
+
+.header input{
+    float: right;
+    height: 40px;
+}
+
 .menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 25%;
-    background-color: #f1f1f1;
+    width: 20%;
     height: 100%; 
     position: fixed; 
     overflow: auto; 
@@ -12,6 +25,8 @@
     .menu li {
     text-align: center;
     border-bottom: 1px solid ;
+    background: rgb(0,0,0, 0.9);
+    color: white;
     }
 
     .menu li:last-child {
@@ -21,14 +36,13 @@
     .menu a{
     display: block;
     padding: 8px;
-    background: rgb(0,0,0, 0.9);  /* transparency */
 }
 .menu li a{
     display: block;
-    padding: 14px 16px;
     text-align: center;
     text-decoration: none;
     color:white;
+    padding: 14px 16px;
 }
 
 .menu li a:hover{
