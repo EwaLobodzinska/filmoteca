@@ -1,0 +1,50 @@
+
+.header button{
+    float: right;
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 40px;
+}
+
+.header input{
+    float: right;
+    height: 40px;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    height: 100%; 
+    position: fixed; 
+    overflow: auto; 
+    }
+
+    .menu li {
+    text-align: center;
+    border-bottom: 1px solid ;
+    background: rgb(0,0,0, 0.9);
+    color: white;
+    }
+
+    .menu li:last-child {
+    border-bottom: none;
+    }
+
+    .menu a{
+    display: block;
+    padding: 8px;
+}
+.menu li a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    padding: 14px 16px;
+}
+
+.menu li a:hover{
+    background-color: rgb(48, 48, 139);
+}
