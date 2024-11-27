@@ -6,14 +6,18 @@ namespace App\Controller;
 
 use App\Entity\Film;
 use App\Repository\FilmRepository;
+use App\Core\TwigEnvironment;
 
 class FilmController
-{
+{  
     public function list(array $queryParams)
     {
+        $twig = TwigEnvironment::create();
+
         $filmRepository = new FilmRepository();
         $films = $filmRepository->findAll();
 
+        echo $twig->render('listeFilms.html.twig', ['movies' => $films]);
         /* $filmEntities = [];
         foreach ($films as $film) {
             $filmEntity = new Film();
@@ -29,7 +33,7 @@ class FilmController
             $filmEntities[] = $filmEntity;
         } */
 
-        dd($films);
+        //dd($films);
 
         // header('Content-Type: application/json');
         // echo json_encode($films);

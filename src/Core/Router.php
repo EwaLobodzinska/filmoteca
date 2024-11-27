@@ -5,6 +5,7 @@ namespace App\Core;
 
 class Router
 {
+
     public function route()
     {
         /**

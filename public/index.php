@@ -26,5 +26,6 @@ use App\Core\Router; // Utilise la classe Router du namespace App\Core
 
 // FRONT-CONTROLLER
 $router = new Router(); // Crée une nouvelle instance de la classe Router
-$router->route(); // Appelle la méthode route() pour gérer les requêtes entrantes
+$rout = $router->route(); // Appelle la méthode route() pour gérer les requêtes entrantes
+
 
