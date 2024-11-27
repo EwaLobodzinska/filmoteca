@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Films</title>
+    <style>
+        .films {
+            margin-left: 25%;
+        }
+    </style>
+</head>
+<body>
+    <div class="films">
+        <h1>Liste des Films</h1><br>
+        
+        {% for movie in movies %}
+            <h2>{{ movie.title }}</h2>
+            <p><b>Year:</b> {{ movie.year }}</p>
+            <p><b>Synopsis:</b> {{ movie.synopsis }}</p>
+            <p><b>Director:</b> {{ movie.director }}</p>
+            <p><b>Genre:</b> {{ movie.genre }}</p>
+        {% else %}
+            <p>No movies found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
