@@ -24,8 +24,8 @@
                 {% for film in movies %}
                     {% if film.deleted_at is null %}
                         <tr>
-                            <td>{{ film.id }} </td>
-                            <td ><a href ="/films/read?id={{ film.id }}" >{{ film.title }}</td>
+                            <td>{{ film.id }}</td>
+                            <td>{{ film.title }}</td>
                             <td>{{ film.year is not null ? film.year : 'N/A' }}</td>
                             <td>{{ film.type }}</td>
                             <td>{{ film.synopsis is not null ? film.synopsis|slice(0, 50) ~ '...' : 'N/A' }}</td>
