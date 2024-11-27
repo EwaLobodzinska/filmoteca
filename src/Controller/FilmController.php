@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types=1); //pas de conversion automatique (non permise) 3 + "3" (respecte des types)
 
 namespace App\Controller;
 

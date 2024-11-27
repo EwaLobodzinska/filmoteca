@@ -28,14 +28,7 @@ RUN apk update && apk add --no-cache \
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 
 RUN docker-php-ext-install \
-    pdo pdo_mysql \
-    zip \
-    xsl \
-    gd \
-    exif \
-    mbstring \
-    opcache \
-    intl
+    pdo pdo_mysql zip xsl gd exif mbstring opcache intl
 
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
 

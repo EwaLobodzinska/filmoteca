@@ -13,7 +13,7 @@ class EntityMapper
 
         // Pour chaque champ de l'entité, assigner la valeur correspondante dans $data
         foreach ($data as $key => $value) {
-            $setterKey = str_replace('_', '', ucwords($key, '_'));
+            $setterKey = str_replace('_', '', ucwords($key, '_')); //ucwords pour mettre en majuscule 
             $setter = 'set' . $setterKey;
 
             // Si le champ contient "at" (ex : created_at), convertir en DateTime
