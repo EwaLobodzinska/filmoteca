@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des films{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <form action="/films/update?id={{ film.id }}" method="POST" class="bg-white p-4 rounded shadow">
+        <fieldset>
+            <legend class="mb-4" style="color: #6f42c1;"><b>Modifier un film</b></legend>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Entrez un titre de film</label>
+                <input type="text" id="title" name="title" class="form-control" value="{{ film.title }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Entrez une année de film</label>
+                <input type="text" id="year" name="year" class="form-control" value="{{ film.year }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="synopsis" class="form-label">Entrez un synopsis de film</label>
+                <input type="text" id="synopsis" name="synopsis" class="form-control" value="{{ film.synopsis }}"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="director" class="form-label">Entrez un directeur de film</label>
+                <input type="text" id="director" name="director" class="form-control" value="{{ film.director }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Entrez un genre de film</label>
+                <input type="text" id="genre" name="type" class="form-control" value="{{ film.type }}">
+            </div>
+            <button type="submit" class="btn me-2 w-100" style="background-color: #6f42c1;" ><a href="/films/update?id={{ film.id }}" class="text-decoration-none text-white"> Modifier </a></button>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

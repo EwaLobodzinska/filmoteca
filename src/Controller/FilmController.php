@@ -41,7 +41,27 @@ class FilmController
 
     public function create()
     {
-        echo "Création d'un film";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $filmRepository = new FilmRepository();
+    
+            $newFilm = [
+                'title' => $_POST['title'],
+                'year' => $_POST['year'],
+                'synopsis' => $_POST['synopsis'],
+                'director' => $_POST['director'],
+                'type' => $_POST['type'],
+            ];
+    
+            if ($filmRepository->create($newFilm)) {
+                session_start(); 
+                $_SESSION['message'] = 'Nouveau film bien ajoute!';
+
+                header("Location: /films/create");
+                exit;
+        }
+    }
+        $twig = TwigEnvironment::create();
+        echo $twig->render('create.html.twig');
     }
 
     public function read(array $queryParams)
@@ -55,13 +75,47 @@ class FilmController
 
     }
 
-    public function update()
+    public function update(array $queryParams)
     {
-        echo "Mise à jour d'un film";
+              
+        $twig = TwigEnvironment::create();
+
+        $filmRepository = new FilmRepository();
+        $id = (int) $queryParams['id'];
+        $film = $filmRepository->find($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+            $newFilm = [
+                'title' => $_POST['title'],
+                'year' => $_POST['year'],
+                'synopsis' => $_POST['synopsis'],
+                'director' => $_POST['director'],
+                'type' => $_POST['type'],
+            ];
+    
+            if ($filmRepository->update($newFilm, $id)) {
+                session_start(); 
+                $_SESSION['message'] = 'Film bien modifie!';
+
+                header("Location: /films/list");
+                exit;
+        }
+    }
+        echo $twig->render('update.html.twig', ['film' => $film]);
     }
 
-    public function delete()
+    public function delete(array $queryParams)
     {
-        echo "Suppression d'un film";
+        $twig = TwigEnvironment::create();
+        $id = (int) $queryParams['id'];
+    
+        $filmRepository = new FilmRepository();
+        $film = $filmRepository->find($id);
+ 
+        $filmRepository->delete($film);
+        header("Location: /films/list"); 
+        exit;
     }
+    
 }

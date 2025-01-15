@@ -1,34 +1,35 @@
-<html>
-    <head>
-        <title>create film</title>
-    </head>
-    <body>  
-       <form action="create.php" method="POST">
-        <fieldset>
-            <legend><b>Ajouter un film</b></legend>
-            <label id="title">Entrez un titre de film</label>
-            <input type="text" id="title" name="title">
-            <br>
-            <label id="year">Entrez une annee de film</label>
-            <input type="text" id="year" name="year">
-            <br>
-            <label id="synopsis">Entrez un synopsis de film</label>
-            <input type="text" id="synopsis" name="synopsis">
-            <br>
-            <label id="director">Entrez un director de film</label>
-            <input type="text" id="director" name="director">
-            <br>
-            <label id="created">Entrez un date de creation de film</label>
-            <input type="date" id="created" name="created">
-            <br>
-            <label id="deleted">Entrez un date de surpression de film</label>
-            <input type="date" id="deleted" name="deleted">
-            <br>
-            <label id="genre">Entrez un genre de film</label>
-            <input type="text" id="genre" name="genre">
-            <button>Ajouter</button>
+{% extends 'base.html.twig' %}
 
+{% block title %}Liste des films{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <form action="/films/create" method="POST" class="bg-white p-4 rounded shadow">
+        <fieldset>
+            <legend class="mb-4" style="color: #6f42c1;"><b>Ajouter un film</b></legend>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Entrez un titre de film</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="Titre de film">
+            </div>
+
+            <div class="mb-3">
+                <label for="year" class="form-label">Entrez une année de film</label>
+                <input type="text" id="year" name="year" class="form-control" placeholder="Année de film">
+            </div>
+
+            <div class="mb-3">
+                <label for="synopsis" class="form-label">Entrez un synopsis de film</label>
+                <textarea id="synopsis" name="synopsis" class="form-control" rows="3" placeholder="Synopsis de film"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="director" class="form-label">Entrez un directeur de film</label>
+                <input type="text" id="director" name="director" class="form-control" placeholder="Directeur de film">
+            </div>
+            
+            <button type="submit" class="btn me-2 w-100" style="background-color: #6f42c1;" ><a href="/films/create" class="text-decoration-none text-white">Ajouter</a></button>
         </fieldset>
-       </form> 
-    </body>
-</html>
+    </form>
+</div>
+{% endblock %}

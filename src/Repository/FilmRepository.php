@@ -52,4 +52,50 @@ class FilmRepository
         // Utilise le service de mappage pour convertir le résultat en objet Film
         return $this->entityMapperService->mapToEntity($film, Film::class);
     }
+
+    public function create($film)
+    {
+        $this->db->exec("ALTER TABLE film AUTO_INCREMENT = 1");
+
+        $stmt = $this->db->prepare("
+            INSERT INTO film (title, year, type, synopsis, director, created_at)
+            VALUES (:title, :year, :type, :synopsis, :director, NOW())
+        ");
+        return $stmt->execute([
+            ':title' => $film['title'],
+            ':year' => $film['year'],
+            ':type' => $film['type'],
+            ':synopsis' => $film['synopsis'],
+            ':director' => $film['director'],
+        ]);
+    }
+
+    public function update($film, $id)
+    {
+        $stmt = $this->db->prepare("
+            UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director
+            WHERE id = :id
+        ");
+        return $stmt->execute([
+            ':id' => $id,
+            ':title' => $film['title'],
+            ':year' => $film['year'],
+            ':type' => $film['type'],
+            ':synopsis' => $film['synopsis'],
+            ':director' => $film['director'],
+        ]);
+    }
+
+    public function delete($film)
+{
+    $stmt = $this->db->prepare("
+        DELETE FROM film WHERE id = :id
+    ");
+    
+    return $stmt->execute([
+        ':id' => $film->getId(),
+    ]);
+}
+
+    
 }
