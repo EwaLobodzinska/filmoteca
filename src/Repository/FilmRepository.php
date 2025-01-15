@@ -73,7 +73,7 @@ class FilmRepository
     public function update($film, $id)
     {
         $stmt = $this->db->prepare("
-            UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director
+            UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director, updated_at = NOW()
             WHERE id = :id
         ");
         return $stmt->execute([
@@ -86,14 +86,14 @@ class FilmRepository
         ]);
     }
 
-    public function delete($film)
+    public function delete(int $id) : bool
 {
     $stmt = $this->db->prepare("
         DELETE FROM film WHERE id = :id
     ");
     
     return $stmt->execute([
-        ':id' => $film->getId(),
+        ':id' => $id,
     ]);
 }
 

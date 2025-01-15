@@ -3,9 +3,14 @@
 {% block title %}Liste des films{% endblock %}
 
 {% block content %}
+{% if message %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endif %}
+
     <div class="container my-5">
         <h1>Film</h1>
-        <!-- Film Information Table -->
 <div class="container shadow-sm p-4 rounded bg-white">
     
     {% if film.deleted_at is null %}
@@ -39,8 +44,8 @@
                 {{ film.createdAt.format('d/m/Y H:i') }}</p>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <p><strong class="fw-bold mb-0 fs-5"> Modiféé le: </strong>
-                {{ film.upadatedAt.format('d/m/Y H:i') }}</p>
+                <p><strong class="fw-bold mb-0 fs-5"> Derniere modification: </strong>
+                {{ film.updatedAt.format('d/m/Y H:i') }}</p>
             </li>
         </ul>
     {% else %}

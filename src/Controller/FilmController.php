@@ -41,6 +41,8 @@ class FilmController
 
     public function create()
     {
+        $message = null;
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $filmRepository = new FilmRepository();
     
@@ -53,15 +55,13 @@ class FilmController
             ];
     
             if ($filmRepository->create($newFilm)) {
-                session_start(); 
-                $_SESSION['message'] = 'Nouveau film bien ajoute!';
-
-                header("Location: /films/create");
-                exit;
+                $message = "Nouveau film bien ajouté!";
+                // header("Location: /films/create");
+                // exit;
         }
     }
         $twig = TwigEnvironment::create();
-        echo $twig->render('create.html.twig');
+        echo $twig->render('create.html.twig', ['message' => $message]);
     }
 
     public function read(array $queryParams)
@@ -77,7 +77,8 @@ class FilmController
 
     public function update(array $queryParams)
     {
-              
+        $message = null;
+
         $twig = TwigEnvironment::create();
 
         $filmRepository = new FilmRepository();
@@ -95,14 +96,12 @@ class FilmController
             ];
     
             if ($filmRepository->update($newFilm, $id)) {
-                session_start(); 
-                $_SESSION['message'] = 'Film bien modifie!';
-
-                header("Location: /films/list");
+                // $message = "Nouveau film bien ajouté!";
+                header("Location: /films/read?id=".$id);
                 exit;
         }
     }
-        echo $twig->render('update.html.twig', ['film' => $film]);
+        echo $twig->render('update.html.twig', ['film' => $film], ['message' => $message]);
     }
 
     public function delete(array $queryParams)
@@ -111,9 +110,8 @@ class FilmController
         $id = (int) $queryParams['id'];
     
         $filmRepository = new FilmRepository();
-        $film = $filmRepository->find($id);
  
-        $filmRepository->delete($film);
+        $filmRepository->delete($id);
         header("Location: /films/list"); 
         exit;
     }

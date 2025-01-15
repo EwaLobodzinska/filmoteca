@@ -3,6 +3,12 @@
 {% block title %}Liste des films{% endblock %}
 
 {% block content %}
+{% if message %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endif %}
+
 <div class="container my-5">
     <form action="/films/create" method="POST" class="bg-white p-4 rounded shadow">
         <fieldset>
@@ -27,7 +33,11 @@
                 <label for="director" class="form-label">Entrez un directeur de film</label>
                 <input type="text" id="director" name="director" class="form-control" placeholder="Directeur de film">
             </div>
-            
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Entrez un genre de film</label>
+                <input type="text" id="genre" name="type" class="form-control" placeholder="Genre de film">
+            </div>
             <button type="submit" class="btn me-2 w-100" style="background-color: #6f42c1;" ><a href="/films/create" class="text-decoration-none text-white">Ajouter</a></button>
         </fieldset>
     </form>
