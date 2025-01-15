@@ -24,6 +24,7 @@ class Router
 
         // Définit les routes et leurs contrôleurs associés
         $routes = [
+            'home' => 'HomeController',
             'films' => 'FilmController',
             'contact' => 'ContactController',
         ];

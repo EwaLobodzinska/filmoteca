@@ -10,7 +10,7 @@ use App\Core\TwigEnvironment;
 
 class FilmController
 {  
-    public function list(array $queryParams)
+    public function list()
     {
         $twig = TwigEnvironment::create();
 
@@ -46,10 +46,13 @@ class FilmController
 
     public function read(array $queryParams)
     {
+        $twig = TwigEnvironment::create();
+
         $filmRepository = new FilmRepository();
         $film = $filmRepository->find((int) $queryParams['id']);
 
-        dd($film);
+        echo $twig->render('read.html.twig', ['film' => $film]);
+
     }
 
     public function update()
