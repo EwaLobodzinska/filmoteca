@@ -62,11 +62,11 @@ class FilmRepository
             VALUES (:title, :year, :type, :synopsis, :director, NOW())
         ");
         return $stmt->execute([
-            ':title' => $film['title'],
-            ':year' => $film['year'],
-            ':type' => $film['type'],
-            ':synopsis' => $film['synopsis'],
-            ':director' => $film['director'],
+            ':title' => $film->getTitle(),
+            ':year' => $film->getYear(),
+            ':type' => $film->getType(),
+            ':synopsis' => $film->getSynopsis(),
+            ':director' => $film->getDirector(),
         ]);
     }
 
@@ -78,11 +78,11 @@ class FilmRepository
         ");
         return $stmt->execute([
             ':id' => $id,
-            ':title' => $film['title'],
-            ':year' => $film['year'],
-            ':type' => $film['type'],
-            ':synopsis' => $film['synopsis'],
-            ':director' => $film['director'],
+            ':title' => $film->getTitle(),
+            ':year' => $film->getYear(),
+            ':type' => $film->getType(),
+            ':synopsis' => $film->getSynopsis(),
+            ':director' => $film->getDirector(),
         ]);
     }
 

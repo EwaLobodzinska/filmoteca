@@ -7,21 +7,23 @@ namespace App\Controller;
 use App\Core\TemplateRenderer;
 use App\Entity\Film;
 use App\Repository\FilmRepository;
+use App\Service\EntityMapper;
 
 class FilmController
 {  
     private TemplateRenderer $renderer;
     private FilmRepository $filmRepository;
+    private EntityMapper $entityMapper;
 
     public function __construct()
     {
         $this->renderer = new TemplateRenderer();
         $this->filmRepository = new FilmRepository();
+        $this->entityMapper = new EntityMapper();
     }
     public function list()
     {
         $films = $this->filmRepository->findAll();
-
         echo $this->renderer->render('listeFilms.html.twig', ['movies' => $films]);
     }
 
@@ -30,14 +32,8 @@ class FilmController
         $message = null;
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-            $newFilm = [
-                'title' => $_POST['title'],
-                'year' => $_POST['year'],
-                'synopsis' => $_POST['synopsis'],
-                'director' => $_POST['director'],
-                'type' => $_POST['type'],
-            ];
+
+            $newFilm = $this->entityMapper->mapToEntity($_POST, Film::class);
     
             if ($this->filmRepository->create($newFilm)) {
                 $message = "Nouveau film bien ajouté!";
@@ -51,28 +47,18 @@ class FilmController
 
     public function read(array $queryParams)
     {
-
         $film = $this->filmRepository->find((int) $queryParams['id']);
-
         echo $this->renderer->render('read.html.twig', ['film' => $film]);
-
     }
 
     public function update(array $queryParams)
     {
-
         $id = (int) $queryParams['id'];
         $film = $this->filmRepository->find($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-            $newFilm = [
-                'title' => $_POST['title'],
-                'year' => $_POST['year'],
-                'synopsis' => $_POST['synopsis'],
-                'director' => $_POST['director'],
-                'type' => $_POST['type'],
-            ];
+
+            $newFilm = $this->entityMapper->mapToEntity($_POST, Film::class);
     
             if ($this->filmRepository->update($newFilm, $id)) {
 
