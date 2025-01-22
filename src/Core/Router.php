@@ -9,12 +9,6 @@ class Router
 {
     public function route()
     {
-        /**
-         * echo '<pre>';
-         * var_dump($_SERVER);
-         * echo '</pre>';die;
-         */
-
         // Récupère l'URL demandée (sans le domaine et la racine)
         $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
@@ -49,7 +43,7 @@ class Router
         } else {
             // Si la route n'existe pas, affiche la page d'accueil
             $controller = new HomeController();
-            $controller->index();
+            $controller->home();
         }
     }
 

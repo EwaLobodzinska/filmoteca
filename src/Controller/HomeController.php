@@ -16,10 +16,8 @@ class HomeController
         $this->renderer = new TemplateRenderer();
     }
 
-    // Méthode pour afficher la page d'accueil
-    public function index()
+    public function home()
     {
-        // Rendre la vue homepage.html.twig
         echo $this->renderer->render('homePage.html.twig');
     }
 }

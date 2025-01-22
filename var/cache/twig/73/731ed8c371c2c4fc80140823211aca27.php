@@ -57,7 +57,7 @@ class __TwigTemplate_6d44f870919ad3639e1e32eccdd9ab8f extends Template
             <input type=\"text\" class=\"form-control w-25 me-2\" placeholder=\"Search...\">
 
             <button class=\"btn btn-outline-secondary me-2\">
-                <a href=\"/home/home\" class=\"text-decoration-none text-secondary\">Accueil</a>
+                <a href=\"/\" class=\"text-decoration-none text-secondary\">Accueil</a>
             </button>
             <button class=\"btn btn-outline-secondary me-2\">
                 <a href=\"/films/list\" class=\"text-decoration-none text-secondary\">Liste des films</a>
@@ -108,7 +108,7 @@ class __TwigTemplate_6d44f870919ad3639e1e32eccdd9ab8f extends Template
             <input type=\"text\" class=\"form-control w-25 me-2\" placeholder=\"Search...\">
 
             <button class=\"btn btn-outline-secondary me-2\">
-                <a href=\"/home/home\" class=\"text-decoration-none text-secondary\">Accueil</a>
+                <a href=\"/\" class=\"text-decoration-none text-secondary\">Accueil</a>
             </button>
             <button class=\"btn btn-outline-secondary me-2\">
                 <a href=\"/films/list\" class=\"text-decoration-none text-secondary\">Liste des films</a>
